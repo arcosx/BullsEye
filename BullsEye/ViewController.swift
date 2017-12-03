@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import QuartzCore
 class ViewController: UIViewController {
     
     @IBOutlet weak var slider:UISlider!
@@ -87,6 +87,13 @@ class ViewController: UIViewController {
         score = 0
         round = 0
         startNewRound()
+        // add crossfade effects
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        
+        view.layer.add(transition, forKey: nil)
     }
     @IBAction func startOver(){
         startNewGame()
